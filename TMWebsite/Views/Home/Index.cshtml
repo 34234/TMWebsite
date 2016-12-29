@@ -1,31 +1,75 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Trang chủ";
+    @Styles.Render("~/Content/themes/base/css")
+}
+<link href="~/Content/datatables.min.css" rel="stylesheet" />
+@*<div class="jumbotron">
+    <h1>Quản Lý Công Việc Hệ thống Quản Lý Công Việc Phiên Bản 2.1</h1>
+    <h2 class="lead">Liên hệ với chúng tôi</h2>
+    <p>
+        VNIT-Pro
+        Email: duanhquy@mail.com
+    </p>
+</div>*@
+
+<div class="row" >
+    <div class="col-lg-12">
+        <div class="card-box">
+            <div class="row">
+                <div class="form-group" style="margin-bottom:10px;" id="idx_frmtimkiem">
+                    <div class="pull-left form-inline">                                                                                             
+                        <form action="/Project-3" method="get" >
+                            @if (User.IsInRole("admin") || User.IsInRole("manager") || User.IsInRole("leader") || User.IsInRole("director"))
+                            {
+                                <select class="form-control" id="cbodvi" name="cbodvi"></select>@:&nbsp;
+                                <select class="form-control" id="cbopban" name="cbopban"></select>@:&nbsp;
+                                @*<select class="form-control" id="cboProject" name="cboProject"></select>@:&nbsp;*@
+                                <select class="form-control" id="cbonvien" name="cbonvien"></select>@:&nbsp;
+                            }                           
+                            <select class="form-control" id="cboLoaiCviec" name="cboLoaiCviec"></select>&nbsp;
+                            @Html.TextBox("DueDate", null, new { @class = "form-control", placeholder = "Ngày hết hạn", @id = "drlNgayHetHan" }) &nbsp;
+                            <a id="btntimkiem" class="btn btn-primary waves-effect">
+                                <i class="zmdi zmdi-search"></i> Tìm kiếm
+                            </a>
+                        </form>                       
+                        <br />
+                        <a id="btnPrivateTask" class="btn btn-success waves-effect">
+                            Lịch cá nhân
+                        </a>
+                        <a  class="btn btn-purple waves-effect">
+                            <i class="icon icon-plus"></i> Tạo sự kiện
+                        </a>
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@*<div class="row">
+    <div class="col-md-12">
+        <div id="messagesTable"></div>
+    </div>
+</div>*@
+<div class="row">    
+    @Html.Partial("_Calender")
+</div>
+
+@section scriptsAdd {
+
+    <!-- Jquery-Ui -->
+    <script src="~/Content/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- BEGIN PAGE SCRIPTS -->
+    <script src="~/Content/assets/plugins/fullcalendar/dist/moment.min.js"></script>
+    <script src="~/Content/assets/plugins/fullcalendar/dist/fullcalendar.js"></script>    
+    <script src="~/Content/assets/plugins/fullcalendar/dist/lang/vi.js"></script>
+    <script src="~/Content/assets/pages/jquery.fullcalendar.js"></script>
+
+   
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+

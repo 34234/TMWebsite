@@ -1,0 +1,62 @@
+﻿@*@if (ViewBag.NoScript == null)
+    {
+        <script src="~/Scripts/jquery-1.10.2.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+    }*@
+@using Microsoft.AspNet.Identity
+@using System.Security.Claims
+
+@if (Request.IsAuthenticated)
+{
+    <li class="nav-item dropdown notification-list">
+        <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+           aria-haspopup="false" aria-expanded="false">
+            <img src="~/Content/assets/images/users/avatar-1.jpg" alt="user" class="img-circle">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-arrow profile-dropdown " aria-labelledby="Preview">
+            <!-- item-->
+            <div class="dropdown-item noti-title">
+                <h5 class="text-overflow">
+                    <small style="color:yellow;text-align:center;">
+                        @{
+                            var claimCurrentName = ClaimsPrincipal.Current.Claims.FirstOrDefault(c => c.Type == "HRM_WEBSITE:UserFullName");
+                            if (claimCurrentName != null)
+                            {
+                                @Html.ActionLink(claimCurrentName.Value, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @style="color:#fff !important" })
+                            }
+                            else
+                            {
+                                @Html.ActionLink(User.Identity.Name, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @style = "color:#fff !important" })
+                            }
+                        }
+                    </small>
+                </h5>
+            </div>
+
+            <!-- item-->
+            <a href="@Url.Action("Index","Manage")" class="dropdown-item notify-item">
+                <i class="zmdi zmdi-account-circle"></i> <span>Hồ sơ của bạn</span>
+            </a>
+
+            <!-- item-->
+            @*<a href="javascript:void(0);" class="dropdown-item notify-item">
+                <i class="zmdi zmdi-lock-open"></i> <span>Khóa màn hình</span>
+            </a>*@
+
+            <!-- item-->
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <a href="javascript:document.getElementById('logoutForm').submit()" class="dropdown-item notify-item">
+                    <i class="zmdi zmdi-power"></i> <span>Đăng xuất</span>
+                </a>
+            } 
+        </div>
+    </li>
+
+
+}
+else
+{
+    <p>Chưa đăng nhập!</p>
+}

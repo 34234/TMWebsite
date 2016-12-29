@@ -1,0 +1,56 @@
+﻿    @if (User.IsInRole("admin"))
+    {
+        <div class="btn-group btn-secondary" role="group">
+            @Html.ActionLink("Tạo việc con", "Create", new { Parent= Model.Id } , new{ @class="btn btn-secondary waves-effect" })
+         </div>
+        <div class="btn-group" role="group">
+            @Html.ActionLink("Nhân bản", "Dublicate", new { id = Model.Id }, new{ @class="btn btn-secondary waves-effect" })
+        </div>
+        <div class="btn-group" role="group">
+            @Html.ActionLink("Xóa", "Delete", new { id = Model.Id }, new { @class = "btn btn-secondary waves-effect" })
+        </div>
+        <div class="btn-group" role="group">
+            @Html.ActionLink("Sửa", "Edit", new { id = Model.Id }, new{ @class="btn btn-secondary waves-effect" })
+        </div>
+        <div class="btn-group" role="group">
+            @Html.ActionLink("Tệp đính kèm", "Files", new { id = Model.Id }, new{ @class="btn btn-secondary waves-effect" })
+            </div>
+        <div class="btn-group" role="group">
+            @Html.ActionLink("Giao việc", "TaskAssign", new { id = Model.Id }, new { @class = "btn btn-secondary waves-effect" })
+        </div>
+    }
+    else
+    {
+        if (User.IsInRole("taskCRUD"))
+        {
+            <div class="btn-group" role="group">
+                @Html.ActionLink("Tạo việc con", "Create", new { Parent = Model.Id }, new { @class = "btn btn-secondary waves-effect" })
+            </div>
+            <div class="btn-group" role="group">
+                @Html.ActionLink("Nhân bản", "Dublicate", new { id = Model.Id }, new { @class = "btn btn-secondary waves-effect" })
+            </div>      
+            <div class="btn-group" role="group">
+                @Html.ActionLink("Sửa", "Edit", new { id = Model.Id }, new { @class = "btn btn-secondary waves-effect" })
+            </div>
+            <div class="btn-group" role="group">
+                @Html.ActionLink("Xóa", "Delete", new { id = Model.Id }, new { @class = "btn btn-secondary waves-effect" })
+            </div>
+        }
+
+        if (User.IsInRole("taskAddFiles") || User.IsInRole("taskDeleteFiles"))
+        {
+            <div class="btn-group" role="group">
+                @Html.ActionLink("Tệp đính kèm", "Files", new { id = Model.Id }, new{ @class="btn btn-secondary waves-effect" })
+            </div>
+        }
+
+        if (User.IsInRole("taskAttachUser"))
+        {
+            <div class="btn-group" role="group">
+                @Html.ActionLink("Giao việc", "TaskAssign", new { id = Model.Id }, new { @class = "btn btn-secondary waves-effect" })
+            </div>
+        }
+    }
+    <div class="btn-group" role="group">
+        @Html.ActionLink("Đánh giá", "TaskRate", new { id = Model.Id }, new { @class = "btn btn-secondary waves-effect" })
+    </div>

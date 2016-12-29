@@ -1,0 +1,61 @@
+﻿@model IEnumerable<HRM_WEBSITE.Models.Messages>
+
+   
+
+<table id="itemContent2" class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th> Mã tin nhắn</th>
+            <th>
+                Nội dung
+            </th>
+            <th>
+                Người gửi
+            </th>
+            <th>
+                Trạng thái
+            </th>
+            <th>
+                Ngày gửi
+            </th>
+        </tr>
+    </thead>
+ 
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MessageID)
+                </td>
+                <td>
+                    <a href="@Url.Action("UpdateMessage","TaskItems",new { id = item.MessageID })">@Html.DisplayFor(modelItem => item.Message)</a>
+                </td>
+                <th>
+                    @HRM_WEBSITE.Persistence.Repository.MessagesRepository.GetUserName(item.CreateId)
+                </th>
+                <th>
+                    @if (item.Status == 2)
+                    {
+                        <span class="label label-info">Đã đọc</span>
+                    }
+                    else
+                    {
+                        <span class="label label-danger">Chưa đọc</span>
+                    }
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MessageDate)
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+ 
+</table>
+
+
+
+
+

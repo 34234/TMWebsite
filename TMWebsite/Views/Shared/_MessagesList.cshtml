@@ -1,0 +1,77 @@
+﻿@model IEnumerable<HRM_WEBSITE.Models.Messages>
+
+<a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
+   aria-haspopup="false" aria-expanded="false">
+    <i class="zmdi zmdi-email noti-icon"></i>
+    @if (Model.Count(p => p.Status == 1) > 0)
+    {
+        <span class="noti-icon-badge"></span>
+    }
+</a>
+<div   class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-arrow-success dropdown-lg" aria-labelledby="Preview">
+    <!-- item-->
+    <div class="dropdown-item noti-title bg-success">
+        <h5><small><span class="label label-danger pull-xs-right">@Model.Count(p => p.Status == 1).ToString()</span>Tin nhắn chưa đọc</small></h5>
+    </div>
+    <div id="pageData" style="height: 420px;overflow:scroll; margin:0 auto; margin-bottom:11px;padding: 5px;" class="inbox-widget nicescroll">
+        <!-- item-->
+        @foreach (var item in Model.Take(15).ToList())
+        {
+            if (item.Status == 1)
+            {
+                <a href="@Url.Action("UpdateMessage","TaskItems",new {Id = item.MessageID })" class="dropdown-item notify-item" style="background-color: #edf2fa;border-color: #c4d2e7;">
+                    <div class="notify-icon bg-faded">
+                        <img src="~/Content/assets/images/users/avatar-2.jpg" alt="img" class="img-circle img-fluid">
+                    </div>
+                    <p class="notify-details">
+                        <b>
+                            @HRM_WEBSITE.Persistence.Repository.MessagesRepository.GetUserName(item.CreateId)
+                        </b>
+                        <span>
+                            @Html.DisplayFor(modelItem => item.Message)
+                            @Html.DisplayFor(modelItem => item.TaskId)
+                        </span>
+                        <small class="text-muted">@Html.DisplayFor(modelItem => item.MessageDate)</small>
+                    </p>
+                </a>
+            }
+            else
+            {
+                <a href="@Url.Action("UpdateMessage","TaskItems",new {Id = item.MessageID })" class="dropdown-item notify-item">
+                    <div class="notify-icon bg-faded">
+                        <img src="~/Content/assets/images/users/avatar-2.jpg" alt="img" class="img-circle img-fluid">
+                    </div>
+                    <p class="notify-details">
+                        <b>
+                            @HRM_WEBSITE.Persistence.Repository.MessagesRepository.GetUserName(item.CreateId)
+                        </b>
+                        <span>
+                            @Html.DisplayFor(modelItem => item.Message)
+                            @Html.DisplayFor(modelItem => item.TaskId)
+                        </span>
+                        <small class="text-muted">@Html.DisplayFor(modelItem => item.MessageDate)</small>
+                    </p>
+                </a>
+            }
+
+        }
+    </div>
+
+   
+
+
+    <div style="text-align:center;margin:0 auto;">
+        <!-- All-->
+        <a href="@Url.Action("ViewMessage","Home")" class="dropdown-item notify-item notify-all" style="color:dodgerblue;text-align:center;">
+            Xem tất cả
+        </a>
+    </div>
+ 
+
+</div>
+
+<script>
+    $(document).ready(function () {   
+        $("#pageData").niceScroll();
+    });    
+</script>

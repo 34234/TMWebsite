@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "Statistics";
+}
+
+<div class="jumbotron">
+    <h2>Số liệu thống kê</h2>
+    <p>                
+        Sử dụng trang này để xem thống kê khác nhau về người dùng và công việc.
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+        <div class="card-box tilebox-three">
+            <div class="bg-icon pull-xs-left">
+                <a href="@Url.Action("TasksPerUser")">
+                    <i class="icon-wallet"></i>
+                </a>          
+            </div>
+            <div class="text-xs-right">
+                <h6 class="text-success text-uppercase m-b-15 m-t-10">Công việc/ Nhân viên</h6>
+                <h2 class="m-b-10">
+                    <span>Thống kê công việc theo nhân viên</span>
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+        <div class="card-box tilebox-three">
+            <div class="bg-icon pull-xs-left">       
+                <a href="@Url.Action("TaskModePerUser")">                    
+                    <i class="icon-basket"></i>
+                </a>
+            </div>
+            <div class="text-xs-right">
+                <h6 class="text-pink text-uppercase m-b-15 m-t-10">Loại việc/ Nhân Viên</h6>
+                <h2 class="m-b-10">
+                    <span>Thống kê loại việc theo nhân viên</span>
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+        <div class="card-box tilebox-three">
+            <div class="bg-icon pull-xs-left">                
+                <a href="@Url.Action("TaskCategoryPerUser")">                    
+                    <i class="icon-equalizer"></i>
+                </a>
+            </div>
+            <div class="text-xs-right">
+                <h6 class="text-purple text-uppercase m-b-15 m-t-10">Chủ đề việc/ Nhân viên</h6>       
+                <h2 class="m-b-10">
+                    <span>Thống kê chủ đề việc theo nhân viên</span>
+                </h2>         
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+        <div class="card-box tilebox-three">
+            <div class="bg-icon pull-xs-left">
+                <a href="@Url.Action("TaskMovements")">
+                    <i class="icon-cup"></i>           
+                </a>
+            </div>
+            <div class="text-xs-right">
+                <h6 class="text-warning text-uppercase m-b-15 m-t-10">Tiến độ Công việc</h6>  
+                <h2 class="m-b-10">
+                    <span>Thống kê theo tiến độ thực hiện</span>
+                </h2>              
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@*<div class="col-sm-12 col-md-12 col-lg-12">
+    <div>
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+                <a href="@Url.Action("TasksPerUser")">
+                    <img src="~/Content/image/col.png" class="img-rounded center-block" />
+                    <p>
+                        <h4 class="text-center text-primary"> Tasks/User </h4>
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+                <a href="@Url.Action("TaskModePerUser")">
+                    <img src="~/Content/image/bar.png" class="img-rounded center-block" />
+                    <p>
+                        <h4 class="text-center text-primary"> Tasks-Mode/User </h4>
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+                <a href="@Url.Action("TaskCategoryPerUser")">
+                    <img src="~/Content/image/pie.png" class="img-rounded center-block" />
+                    <p>
+                        <h4 class="text-center text-primary"> Tasks-Categories/User </h4>
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+                <a href="@Url.Action("TaskMovements")">
+                    <img src="~/Content/image/time.png" class="img-rounded center-block" />
+                    <p>
+                        <h4 class="text-center text-primary"> Task Movements </h4>
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>*@

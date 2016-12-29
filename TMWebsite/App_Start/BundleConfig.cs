@@ -26,6 +26,56 @@ namespace TMWebsite
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            /*
+            * for jQueryUI
+            */
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+                    "~/Scripts/jquery-ui-{version}.js",
+                    "~/Scripts/jquery-ui.unobtrusive-{version}.js"));
+
+            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
+                    "~/Content/themes/base/core.css",
+                    "~/Content/themes/base/datepicker.css",
+                    "~/Content/themes/base/sortable.css",
+                    "~/Content/themes/base/theme.css"));
+
+            /*
+             * for SignalR and for the script that detects window focus
+             */
+            bundles.Add(new ScriptBundle("~/bundles/realtime").Include(
+                "~/Scripts/jquery.signalR-{version}.js",
+                "~/Scripts/tabVisibile.js",
+                "~/Scripts/applicationGeneralScr.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/chatpage").Include(
+                "~/Scripts/chatHelpers.js",
+                "~/Scripts/left.menu.js"
+                ));
+
+            /*
+             * for chat page
+             */
+            bundles.Add(new StyleBundle("~/Content/chat/css").Include(
+                "~/Content/chat.css",
+                "~/Content/leftMenu.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/boardscript").Include(
+                "~/Scripts/jquery-ui-{version}.js",
+                "~/Scripts/boardScript.js",
+                "~/Scripts/jquery-ui.unobtrusive-{version}.js"
+                ));
+
+            /*
+             *for  Datatable
+             */
+            bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
+                       "~/Scripts/DataTables/jquery.dataTables.min.js",
+                       "~/Scripts/DataTables/dataTables.bootstrap.js"));
+
+            bundles.Add(new StyleBundle("~/Content/datatables").Include(
+                      "~/Content/DataTables/css/dataTables.bootstrap.css"));
         }
     }
 }

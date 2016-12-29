@@ -63,6 +63,8 @@ namespace TMWebsite
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+            //app.MapSignalR();
         }
     }
 }
