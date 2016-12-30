@@ -224,6 +224,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\AppModel.cs" />
+    <Compile Include="Persistence\Repository\EventsReposittory.cs" />
+    <Compile Include="Persistence\Repository\Repository.cs" />
+    <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -2977,7 +2980,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -3015,16 +3017,7 @@
     <Content Include="Views\Shared\_ProjectAction.cshtml" />
     <Content Include="Views\Shared\_TaskAction.cshtml" />
     <Content Include="Views\Account\LockSreen.cshtml" />
-    <Content Include="Views\Home\Chat.cshtml" />
-    <Content Include="Views\Home\Documentation.cshtml" />
-    <Content Include="Views\Home\Statistics.cshtml" />
-    <Content Include="Views\Home\TaskCategoryPerUser.cshtml" />
-    <Content Include="Views\Home\TaskModePerUser.cshtml" />
-    <Content Include="Views\Home\TaskMovements.cshtml" />
-    <Content Include="Views\Home\TasksPerUser.cshtml" />
-    <Content Include="Views\Home\ViewMessage.cshtml" />
     <Content Include="Views\Home\_Calender.cshtml" />
-    <Content Include="Views\Home\_ListSupperTask.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

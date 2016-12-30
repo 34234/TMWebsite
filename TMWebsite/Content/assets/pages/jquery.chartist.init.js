@@ -1,5 +1,5 @@
 /**
-* Theme: Qu?n Lý Công Vi?c Dashboard
+* Theme: Uplon Dashboard
 * Author: Coderthemes
 * Chartist chart
 */

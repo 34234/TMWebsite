@@ -18,8 +18,7 @@ namespace TMWebsite.Models
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
             return userIdentity;
-        }
-        public DateTime BirthDate { get; set; }
+        }        
         [MaxLength(10)]
         public string Sub_Id { set; get; }
         [MaxLength(10)]
@@ -29,7 +28,7 @@ namespace TMWebsite.Models
         [MaxLength(15)]
         public string Mobile { set; get; }
         public virtual List<Event> Events { set;get;}
-
+        public Position Position { set; get; }
 
     }
 
@@ -41,7 +40,8 @@ namespace TMWebsite.Models
         public DbSet<GroupEvent> GroupEvents { set; get; }
         public DbSet<ResultEvent> ResultEvents { set; get; }
         public DbSet<Result_URL> Result_URLs { set; get; }
-        
+        public DbSet<Position> Positions { set; get; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

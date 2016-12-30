@@ -1,5 +1,5 @@
 /**
-* Theme: Quản Lý Công Việc Admin Template
+* Theme: Uplon Admin Template
 * Author: Coderthemes
 * Component: Ion Slider
 * 

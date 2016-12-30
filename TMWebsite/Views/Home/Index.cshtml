@@ -12,43 +12,6 @@
     </p>
 </div>*@
 
-<div class="row" >
-    <div class="col-lg-12">
-        <div class="card-box">
-            <div class="row">
-                <div class="form-group" style="margin-bottom:10px;" id="idx_frmtimkiem">
-                    <div class="pull-left form-inline">                                                                                             
-                        <form action="/Project-3" method="get" >
-                            @if (User.IsInRole("admin") || User.IsInRole("manager") || User.IsInRole("leader") || User.IsInRole("director"))
-                            {
-                                <select class="form-control" id="cbodvi" name="cbodvi"></select>@:&nbsp;
-                                <select class="form-control" id="cbopban" name="cbopban"></select>@:&nbsp;
-                                @*<select class="form-control" id="cboProject" name="cboProject"></select>@:&nbsp;*@
-                                <select class="form-control" id="cbonvien" name="cbonvien"></select>@:&nbsp;
-                            }                           
-                            <select class="form-control" id="cboLoaiCviec" name="cboLoaiCviec"></select>&nbsp;
-                            @Html.TextBox("DueDate", null, new { @class = "form-control", placeholder = "Ngày hết hạn", @id = "drlNgayHetHan" }) &nbsp;
-                            <a id="btntimkiem" class="btn btn-primary waves-effect">
-                                <i class="zmdi zmdi-search"></i> Tìm kiếm
-                            </a>
-                        </form>                       
-                        <br />
-                        <a id="btnPrivateTask" class="btn btn-success waves-effect">
-                            Lịch cá nhân
-                        </a>
-                        <a  class="btn btn-purple waves-effect">
-                            <i class="icon icon-plus"></i> Tạo sự kiện
-                        </a>
-                    </div>
-                    <div>
-                        
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
 @*<div class="row">
     <div class="col-md-12">
         <div id="messagesTable"></div>

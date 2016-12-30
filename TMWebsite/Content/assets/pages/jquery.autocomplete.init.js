@@ -1,5 +1,5 @@
 ﻿/**
-Template Name: Quản Lý Công Việc Dashboard
+Template Name: Uplon Dashboard
 Author: CoderThemes
 Email: coderthemes@gmail.com
 File: AutoComplete init js

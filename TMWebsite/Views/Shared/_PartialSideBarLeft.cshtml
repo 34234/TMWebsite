@@ -2,158 +2,39 @@
     <div class="sidebar-inner slimscrollleft">
         <!--- Sidemenu -->
         <div id="sidebar-menu">        
-            <ul>                
-                @{ 
-
-                }
-                @if (User.IsInRole("admin"))
-                {                    
+            <ul>                                                  
                     <li class="no_sub">
-                        <a href="@Url.Action("Index","Home")"><span class="label label-pill label-primary pull-xs-right">1</span><i class="zmdi zmdi-view-dashIndex"></i><span> Trang chủ </span> </a>
+                        <a href="@Url.Action("Index","Home")"><i class="zmdi zmdi-view-dashIndex"></i><span> Trang chủ </span> </a>
                     </li>
                     <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi zmdi-calendar"></i> <span> Quản lý công việc </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
-                            <li>@Html.RouteLink("Danh sách dự án", "Default", new { controller = "Projects", action = "Index" })</li>                            
-                            <li>@Html.RouteLink("Chủ đề công việc", "Default", new { controller = "TaskCategories", action = "Index" })</li>
-                            <li>@Html.RouteLink("Trạng thái công việc", "Default", new { controller = "TaskMarks", action = "Index" })</li>
-                            <li>@Html.RouteLink("Danh sách đối tác", "Default", new { controller = "Customers", action = "Index" })</li>                            
-                            
+                            <li><a>Danh sách công việc</a></li>                                                                                                                                       
                         </ul>
                     </li>
                     <li class="no_sub">
-                        <a href="@Url.Action("Statistics","Home")" class="waves-effect"><i class="zmdi zmdi-chart"></i> <span> Báo cáo thống kê </span> <span class="menu-arrow"></span></a>
+                        <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-collection-text"></i> <span> Báo cáo thống kê </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li><a>Công việc quá hạn</a></li>
+                            <li><a>Các công việc chưa có kết quả </a></li>
+                            <li><a>Danh sách người dùng nhóm theo đơn vị</a></li>
+                        </ul>
                     </li>
 
                     <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-collection-text"></i> <span> Quản lý hệ thống </span> <span class="menu-arrow"></span></a>
-                        <ul class="list-unstyled">
-                            <li>@Html.RouteLink("Danh sách quyền", "Default", new { controller = "Roles", action = "Index" })</li>
-                            <li>@Html.RouteLink("Danh sách tài khoản", "Default", new { controller = "Users", action = "Index" })</li>
-                            <li><a href="#">Nhật ký hệ thống</a></li>         
+                        <ul class="list-unstyled">                            
+                            <li><a>Danh mục đơn vị</a></li>
+                            <li><a>Danh mục người dùng</a></li>
+                            <li><a>Danh mục nhóm công việc</a></li>
+                            <li><a>Danh mục tình trạng công việc</a></li>                                                                                        
                         </ul>
                     </li>
-
-                    <li class="has_sub">
-                        <a href="#" class="waves-effect">
-                        @*<span class="label label-success label-pill pull-xs-right">5</span>*@
-                        <i class="zmdi zmdi-collection-item"></i>
-                        <span> Quản lý danh sách </span></a>
-                        <ul class="list-unstyled">
-                            <li>                                
-                                <a href="@Url.Action("Index","DonVi")"> Danh sách đơn vị </a>
-                            </li>
-                            <li><a href="@Url.Action("Index","PhongBan")">Danh sách phòng ban</a></li>                                            
-                            @*<li><a href="@Url.Action("Index","Menu")">Danh sách chức năng</a></li>*@                            
-                            <li><a href="#">Tài liệu hướng dẫn</a></li>
-                        </ul>
-                    </li>
-
-
-                }
-                else
-                {
-
-                    //Nhóm quyền lãnh đạo
-                    if (User.IsInRole("director"))
-                    {
-                        <li class="no_sub">
-                            <a href="@Url.Action("Index","Home")"><span class="label label-pill label-primary pull-xs-right">1</span><i class="zmdi zmdi-view-dashIndex"></i><span> Trang chủ </span> </a>
-                        </li>
-                        <li class="has_sub">
-                            <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi zmdi-calendar"></i> <span> Quản lý công việc </span> <span class="menu-arrow"></span></a>
-                            <ul class="list-unstyled">
-                                <li>@Html.RouteLink("Danh sách dự án", "Default", new { controller = "Projects", action = "Index" })</li>             
-                                <li>@Html.RouteLink("Tạo công việc mới", "Default", new { controller = "TaskItems", action = "Create" })</li>                                                                                           
-                                <li>@Html.RouteLink("Đánh giá công việc", "Default", new { controller = "PerformanceEvaluation", action = "Create" })</li>                                
-                                <li>@Html.RouteLink("Kết quả đánh giá", "Default", new { controller = "PerformanceEvaluation", action = "ViewRate" })</li>
-                                <li>@Html.RouteLink("Đánh giá công việc khác", "Default", new { controller = "OtherTasks", action = "Index" })</li>
-                                <li>@Html.RouteLink("Danh sách đối tác", "Default", new { controller = "Customers", action = "Index" })</li>                            
-                            </ul>
-                        </li>
-                        <li class="no_sub">
-                            <a href="@Url.Action("Statistics","Home")" class="waves-effect"><i class="zmdi zmdi-chart"></i> <span> Báo cáo thống kê </span> <span class="menu-arrow"></span></a>
-                        </li>
-                    }
-                    else
-                    {
-                        //Nhóm quyền trường , phó phòng các đơn vị
-                        if (User.IsInRole("manager"))
-                        {
-                            <li class="no_sub">
-                                <a href="@Url.Action("Index","Home")" class="waves-effect active"><span class="label label-pill label-primary pull-xs-right">1</span><i class="zmdi zmdi-view-dashIndex"></i><span> Trang chủ </span> </a>
-                            </li>
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi zmdi-calendar"></i> <span> Quản lý công việc </span> <span class="menu-arrow"></span></a>
-                                <ul class="list-unstyled">
-                                    <li>@Html.RouteLink("Danh sách dự án", "Default", new { controller = "Projects", action = "Index" })</li>   
-                                    <li>@Html.RouteLink("Tạo công việc mới", "Default", new { controller = "TaskItems", action = "Create" })</li>                                                                                                             
-                                    <li>@Html.RouteLink("Đánh giá công việc", "Default", new { controller = "PerformanceEvaluation", action = "Create" })</li>                                                                    
-                                    <li>@Html.RouteLink("Kết quả đánh giá", "Default", new { controller = "PerformanceEvaluation", action = "ViewRate" })</li>
-                                    <li>@Html.RouteLink("Đánh giá công việc khác", "Default", new { controller = "OtherTasks", action = "Index" })</li>
-                                    <li>@Html.RouteLink("Danh sách đối tác", "Default", new { controller = "Customers", action = "Index" })</li>                            
-                                </ul>
-                            </li>
-                            <li class="no_sub">
-                                <a href="@Url.Action("Statistics","Home")" class="waves-effect"><i class="zmdi zmdi-chart"></i> <span> Báo cáo thống kê </span> <span class="menu-arrow"></span></a>
-                            </li>                           
-                        }
-                        else
-                        {
-                            //Nhóm quyền trưởng nhóm, tổ trưởng
-                            if (User.IsInRole("leader"))
-                            {
-                                <li class="no_sub">
-                                    <a href="@Url.Action("Index","Home")" class="waves-effect active"><span class="label label-pill label-primary pull-xs-right">1</span><i class="zmdi zmdi-view-dashIndex"></i><span> Trang chủ </span> </a>
-                                </li>
-                                <li class="has_sub">
-                                    <a href="javascript:void(0);" class="wavse-effect"><i class="zmdi zmdi zmdi-calendar"></i> <span> Quản lý công việc </span> <span class="menu-arrow"></span></a>
-                                    <ul class="list-unstyled">
-                                        <li>@Html.RouteLink("Danh sách dự án", "Default", new { controller = "Projects", action = "Index" })</li>                                        
-                                        <li>@Html.RouteLink("Tạo công việc mới", "Default", new { controller = "TaskItems", action = "Create" })</li>                                        
-                                        <li>@Html.RouteLink("Đánh giá công việc", "Default", new { controller = "PerformanceEvaluation", action = "Create" })</li>
-                                        <li>@Html.RouteLink("Kết quả đánh giá", "Default", new { controller = "PerformanceEvaluation", action = "ViewRate" })</li>
-                                        <li>@Html.RouteLink("Đánh giá công việc khác", "Default", new { controller = "OtherTasks", action = "Index" })</li>                                                         
-                                    </ul>
-                                </li>
-                                <li class="no_sub">
-                                    <a href="@Url.Action("Statistics","Home")" class="waves-effect"><i class="zmdi zmdi-chart"></i> <span> Báo cáo thống kê </span> <span class="menu-arrow"></span></a>
-                                </li>
-                            }
-                            else
-                            {
-                                //Nhóm quyền nhân viên
-                                <li class="no_sub">
-                                    <a href="@Url.Action("Index","Home")" class="waves-effect active"><span class="label label-pill label-primary pull-xs-right">1</span><i class="zmdi zmdi-view-dashIndex"></i><span> Trang chủ </span> </a>
-                                </li>
-                                <li class="has_sub">
-                                    <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi zmdi-calendar"></i> <span> Quản lý công việc </span> <span class="menu-arrow"></span></a>
-                                    <ul class="list-unstyled">
-                                        <li>@Html.RouteLink("Tạo công việc mới", "Default", new { controller = "TaskItems", action = "Create" })</li>                                        
-                                        <li>@Html.RouteLink("Danh sách dự án", "Default", new { controller = "Projects", action = "Index" })</li>                                                                                
-                                        <li>@Html.RouteLink("Đánh giá công việc", "Default", new { controller = "PerformanceEvaluation", action = "Create" })</li>                                                                                                            
-                                        <li>@Html.RouteLink("Kết quả đánh giá", "Default", new { controller = "PerformanceEvaluation", action = "ViewRate" })</li>
-                                        <li>@Html.RouteLink("Đánh giá công việc khác", "Default", new { controller = "OtherTasks", action = "Index" })</li>
-                                    </ul>
-                                </li>
-                                @*<li class="no_sub">
-                                    <a href="@Url.Action("Statistics","Home")" class="waves-effect"><i class="zmdi zmdi-chart"></i> <span> Báo cáo thống kê </span> <span class="menu-arrow"></span></a>
-                                </li>*@
-                            }
-                        }
-                    }
-
-                }
-                <li class="no_sub" style="text-align:center">
-                    <img style="height: auto;max-width: 100%;" src="~/Content/image/logo.jpg" class="img-responsive" />
-                </li>
+                                  
             </ul>
-
-            <div class="clearfix"></div>
+            
         </div>
         <!-- Sidebar -->
-        <div class="clearfix"></div>
-
     </div>
 
 </div>

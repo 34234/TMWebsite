@@ -1,5 +1,5 @@
 /**
-Template Name: Qu?n Lý Công Vi?c Dashboard
+Template Name: Uplon Dashboard
 Author: CoderThemes
 Email: coderthemes@gmail.com
 File: Chartjs

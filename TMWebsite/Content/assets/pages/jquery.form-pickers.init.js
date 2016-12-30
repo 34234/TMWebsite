@@ -1,6 +1,6 @@
 
 /**
-* Theme: Qu?n Lý Công Vi?c Admin Template
+* Theme: Uplon Admin Template
 * Author: Coderthemes
  * Email: coderthemes@gmail.com
 * Form pickers

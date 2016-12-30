@@ -60,12 +60,19 @@ namespace TMWebsite.Models
 
     public class Result_URL
     {
+        [Key]
         public int Id { set; get; }
         [MaxLength(150)]
         public string Url { set; get; }
         public ResultEvent ResultEvent { set; get; }
     }
 
-
+    public class Position
+    {
+        [Key]
+        public int ID { set; get; }
+        public string Name { set; get; }        
+        public virtual List<ApplicationUser> ApplicationUser { set; get; }
+    }
 
 }

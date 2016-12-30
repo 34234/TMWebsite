@@ -62,10 +62,10 @@
     <div id="wrapper">
 
         <!-- Top Bar Start -->
-     @*@Html.Partial("_PartialTopBar")*@
+     @Html.Partial("_PartialTopBar")
         <!-- Top Bar End -->
         <!-- ========== Left Sidebar Start ========== -->
-        @*@Html.Partial("_PartialSideBarLeft")*@
+        @Html.Partial("_PartialSideBarLeft")
         <!-- Left Sidebar End -->
         <!-- ============================================================== -->
         <!-- Start right Content here -->
@@ -166,65 +166,6 @@
     @Scripts.Render("~/bundles/datatables")
    
     
-    @*<script type="text/javascript">
-        $(function () {
-            // Declare a proxy to reference the hub.
-            var notifications = $.connection.messagesHub;
-
-            //debugger;
-            // Create a function that the hub can call to broadcast messages.
-            notifications.client.updateMessages = function () {
-                getAllMessages()
-            };
-
-            var nlog = $.connection.loggingHub;
-            nlog.client.log = function (logEvent) {
-                //var scope = angular.element($("#scope")).scope();
-                //scope.changeData(logEvent);
-                //scope.$apply();
-            };
-
-            nlog.logging = true;
-
-            // Start the connection.
-            $.connection.hub.start().done(function () {
-                getAllMessages();
-            }).fail(function (e) {
-                alert(e);
-            });
-
-        });
-
-
-        function getAllMessages() {
-            var tbl = $('#messagesTable');
-            $.ajax({
-                url: '/home/GetMessages',
-                contentType: 'application/html ; charset:utf-8',
-                type: 'GET',
-                dataType: 'html'
-            }).success(function (result) {
-                tbl.empty().append(result);
-            }).error(function () {
-
-            });
-        }
-
-
-        function getLogs() {
-            var tbl = $('#messagesTable');
-            $.ajax({
-                url: '/home/GetLogs',
-                contentType: 'application/html ; charset:utf-8',
-                type: 'GET',
-                dataType: 'html'
-            }).success(function (result) {
-                tbl.empty().append(result);
-            }).error(function () {
-
-            });
-        }
-    </script>*@
 
 </body>
 </html>

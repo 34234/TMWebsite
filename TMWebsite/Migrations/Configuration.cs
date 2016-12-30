@@ -17,6 +17,7 @@
 
         protected override void Seed(TMWebsite.Models.ApplicationDbContext context)
         {
+            //Update-Database
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -27,7 +28,7 @@
             //  new Person { FullName = "Andrew Peters" },
             //  new Person { FullName = "Brice Lambson" },
             //  new Person { FullName = "Rowan Miller" }
-            //);            
+            //);                       
         }
     }
 }
