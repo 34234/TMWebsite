@@ -43,11 +43,7 @@ namespace TMWebsite
             /*
              * for SignalR and for the script that detects window focus
              */
-            bundles.Add(new ScriptBundle("~/bundles/realtime").Include(
-                "~/Scripts/jquery.signalR-{version}.js",
-                "~/Scripts/tabVisibile.js",
-                "~/Scripts/applicationGeneralScr.js"
-                ));
+          
 
             bundles.Add(new ScriptBundle("~/bundles/chatpage").Include(
                 "~/Scripts/chatHelpers.js",

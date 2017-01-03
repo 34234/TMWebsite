@@ -1,0 +1,46 @@
+﻿@model TMWebsite.Models.DemoEvent
+
+@{
+    ViewBag.Title = "UpdateEvent";
+    Layout = null;
+}
+
+
+<form>
+    <label>Thêm lịch</label>
+    <fieldset class='input-group'>
+        <label for="cbonhomcv">Thuộc nhóm công việc:</label>
+        <select id="cbonhomcv">
+            <option>Họp định kỳ giao ban tuần</option>
+            <option>Họp tổng kết</option>
+        </select>
+    </fieldset>
+    <fieldset class='input-group'>
+        <label for="txttieude">Tiêu đề:</label>
+        <input class="form-control" id="txttieude" placeholder="Xin mời nhập tiêu đề" value="@Model.title">
+    </fieldset>
+    <fieldset class='input-group'>
+        <label for="txtnoidung">Nội dung:</label>
+        <input class="form-control" id="txtnoidung" placeholder="Xin mời nhập nội dung" value="@Model.noidung">
+    </fieldset>
+    <fieldset class='input-group'>
+        <label for="txtngaybd">Bắt đầu:</label>
+        <input class="form-control" id="txtngaybd" placeholder="Bắt đầu" value="@Model.start">
+    </fieldset>
+    <fieldset class='input-group'>
+        <label for="txtngaykt">Kết thúc:</label>
+        <input class="form-control" id="txtngaykt" placeholder="Kết thúc"  value="@Model.end">
+    </fieldset>
+    <fieldset class='input-group'>
+        <label for="txtlienquan">Các bên liên quan:</label>
+        <input class="form-control" id="txtlienquan" placeholder="Liên quan">
+    </fieldset>
+
+</form>
+
+<script>
+    (function init() {
+        
+    })();
+
+</script>
