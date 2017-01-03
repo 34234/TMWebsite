@@ -1,4 +1,4 @@
-/**
+﻿/**
 * Theme: Uplon Admin Template
 * Author: Coderthemes
 * Component: Full-Calendar
@@ -20,6 +20,7 @@
         this.$categoryForm = $('#add-category form'),
         this.$extEvents = $('#external-events'),
         this.$calendarObj = null
+        this.$sourceCompelete=['Nguyễn Văn A','Nguyễn Văn B','Công ty điện lực A','Phòng Kinh Doanh','Phòng CNTT','GD Phạm Văn A', 'Tổng giám đốc','Thư ký B']
     };
 
 
@@ -46,91 +47,95 @@
     /* on click on event */
     CalendarApp.prototype.onEventClick =  function (e, jsEvent, view) {
         var $this = this;
-        var DemoEvent = { title: e.title, diachi: e.diachi, chude: e.chude, noidung: e.noidung, start: e.start.format(), end: e.end.format(), lienquan: e.lienquan, ketqua: e.ketqua, files: e.files, className: e.className, tinhtrang:e.tinhtrang }
+        var demoevent = { title: e.title, diachi: e.diachi, chude: e.chude, noidung: e.noidung, start: e.start.format(), end: e.end.format(), lienquan: e.lienquan, ketqua: e.ketqua, files: e.files, className: e.className, tinhtrang: e.tinhtrang } ;       
         $.ajax({
-            type: 'GET',
+            type: 'get',
             url: '/Event/UpdateEvent',
-            datatype: "json",
-            data:  DemoEvent ,
+            datatype: 'json',
+            contentType: 'application/json',
+            data: demoevent,
             async: false,
         }).done(function (d) {
             $('#update-event-modal').modal({
                     backdrop: 'static'
             });
-            $('#update-event-modal').find('.modal-body').empty().prepend(d).end().find('.delete-event').unbind('click').click(function () {
+            $('#update-event-modal').find('.modal-body').empty().prepend(d).end().find('.btn-success').unbind('click').click(function () {
+              
                 $this.$calendarObj.fullCalendar('removeEvents', function (ev) {
                     return (ev._id == calEvent._id);
                 });
                 $this.$modal.modal('hide');
             });
-           //data = d;
-            //var i = 0
-            // for (i; i < d.length; i++) {
-            //d[i].start = new Date(d[i].start.substr(6))
-            //}
+            $this.binddata(e);           
         });
-            //var form = $("<form></form>");
-            //form.append("<label>Change event name</label>");
-            //form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success waves-effect waves-light'><i class='fa fa-check'></i> Save</button></span></div>");
-            //$this.$modal.modal({
-            //    backdrop: 'static'
-            //});
-            //$this.$modal.find('.delete-event').show().end().find('.save-event').hide().end().find('.modal-body').empty().prepend(form).end().find('.delete-event').unbind('click').click(function () {
-            //    $this.$calendarObj.fullCalendar('removeEvents', function (ev) {
-            //        return (ev._id == calEvent._id);
-            //    });
-            //    $this.$modal.modal('hide');
-            //});
-            //$this.$modal.find('form').on('submit', function () {
-            //    calEvent.title = form.find("input[type=text]").val();
-            //    $this.$calendarObj.fullCalendar('updateEvent', calEvent);
-            //    $this.$modal.modal('hide');
-            //    return false;
-            //});
+          
     },
+     CalendarApp.prototype.binddata = function (e) {
+         var $this = this;
+         //$('#txtlienquan').val(data.title);
+         $('#txtlienquan').tagEditor({
+             autocomplete: {
+                 delay: 0, // show suggestions immediately                 
+                 source: $this.$sourceCompelete,
+             },
+             initialTags:e.lienquan,
+             forceLowercase: false,            
+         });
+         var badau = e.start.format('DD/MM/YYYY h.mm');
+         var ketthuc = e.end.format('DD/MM/YYYY h.mm');
+         $('#txtngaybd').val(badau);
+         $('#txtngaykt').val(ketthuc);
+         // format datetime picker
+         $('#txtngaybd').datetimepicker({                  
+             format: 'd/m/Y H:i'
+         });
+
+         $('#txtngaykt').datetimepicker({             
+             format: 'd/m/Y H:i'
+         });
+
+    }
     /* on select */
     CalendarApp.prototype.onSelect = function (start, end, allDay) {
         var $this = this;
+        $.ajax({
+            type: 'get',
+            url: '/Event/UpdateEvent',
+            datatype: 'json',
+            contentType: 'application/json',           
+            async: false,
+        }).done(function (d) {
             $this.$modal.modal({
                 backdrop: 'static'
             });
-            var form = $("<form></form>");
-            form.append("<div class='row'></div>");
-            form.find(".row")
-                .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Event Name</label><input class='form-control' placeholder='Insert Event Name' type='text' name='title'/></div></div>")
-                .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Category</label><select class='form-control' name='category'></select></div></div>")
-                .find("select[name='category']")
-                .append("<option value='bg-danger'>Danger</option>")
-                .append("<option value='bg-success'>Success</option>")
-                .append("<option value='bg-purple'>Purple</option>")
-                .append("<option value='bg-primary'>Primary</option>")
-                .append("<option value='bg-pink'>Pink</option>")
-                .append("<option value='bg-info'>Info</option>")
-                .append("<option value='bg-warning'>Warning</option></div></div>");
-            $this.$modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
+            $this.$modal.find('.modal-body').empty().prepend(d).end().find('.btn-success').unbind('click').click(function () {
                 form.submit();
             });
             $this.$modal.find('form').on('submit', function () {
                 var title = form.find("input[name='title']").val();
                 var beginning = form.find("input[name='beginning']").val();
-                var ending = form.find("input[name='ending']").val();
-                var categoryClass = form.find("select[name='category'] option:checked").val();
+                var ending = form.find("input[name='ending']").val();                
                 if (title !== null && title.length != 0) {
                     $this.$calendarObj.fullCalendar('renderEvent', {
                         title: title,
-                        start:start,
+                        start: start,
                         end: end,
                         allDay: false,
                         className: categoryClass
-                    }, true);  
+                    }, true);
                     $this.$modal.modal('hide');
                 }
-                else{
+                else {
                     alert('You have to give a title to your event');
                 }
                 return false;
-                
+
             });
+        });
+           
+       
+
+           
             $this.$calendarObj.fullCalendar('unselect');
     },
     CalendarApp.prototype.enableDrag = function() {
@@ -171,25 +176,9 @@
         }).done(function (d) {
             defaultEvents = d;
             var i = 0
-            // for (i; i < d.length; i++) {
-            //d[i].start = new Date(d[i].start.substr(6))
-            //}
+           
         });
 
-        //var defaultEvents =  [{
-        //        title: 'Hey!',
-        //        start: new Date($.now() + 158000000),
-        //        className: 'bg-purple'
-        //    }, {
-        //        title: 'See John Deo',
-        //        start: today,
-        //        end: today,
-        //        className: 'bg-danger'
-        //    }, {
-        //        title: 'Buy a Theme',
-        //        start: new Date($.now() + 338000000),
-        //        className: 'bg-primary'
-        //    }];
 
         var $this = this;
         $this.$calendarObj = $this.$calendar.fullCalendar({

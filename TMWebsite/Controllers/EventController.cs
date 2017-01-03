@@ -14,7 +14,7 @@ namespace TMWebsite.Controllers
         {
             return View();
         }
-        
+        [HttpGet]
         public ActionResult UpdateEvent(DemoEvent e)
         {
             return View(e);

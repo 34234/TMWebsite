@@ -233,6 +233,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\css\jquery.tag-editor.css" />
     <Content Include="Content\assets\css\style.css" />
     <Content Include="Content\assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\assets\fonts\glyphicons-halflings-regular.svg" />
@@ -2940,6 +2941,10 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\chatHelpers.js" />
     <Content Include="Scripts\chatHelpers.min.js" />
+    <Content Include="Scripts\datetimepicker\jquery.datetimepicker.full.js" />
+    <Content Include="Scripts\datetimepicker\jquery.datetimepicker.full.min.js" />
+    <Content Include="Scripts\datetimepicker\jquery.datetimepicker.min.css" />
+    <Content Include="Scripts\datetimepicker\jquery.datetimepicker.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -2966,6 +2971,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\tabVisibile.js" />
+    <Content Include="Scripts\tagEditor\jquery.caret.min.js" />
+    <Content Include="Scripts\tagEditor\jquery.tag-editor.js" />
+    <Content Include="Scripts\tagEditor\jquery.tag-editor.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -3028,7 +3036,6 @@
     <Folder Include="Scripts\ckeditor\" />
     <Folder Include="Scripts\DataTables\" />
     <Folder Include="Scripts\fineuploader\" />
-    <Folder Include="Scripts\tagEditor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
