@@ -44,26 +44,49 @@
             }
     },
     /* on click on event */
-    CalendarApp.prototype.onEventClick =  function (calEvent, jsEvent, view) {
+    CalendarApp.prototype.onEventClick =  function (e, jsEvent, view) {
         var $this = this;
-            var form = $("<form></form>");
-            form.append("<label>Change event name</label>");
-            form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success waves-effect waves-light'><i class='fa fa-check'></i> Save</button></span></div>");
-            $this.$modal.modal({
-                backdrop: 'static'
+        var DemoEvent = { title: e.title, diachi: e.diachi, chude: e.chude, noidung: e.noidung, start: e.start.format(), end: e.end.format(), lienquan: e.lienquan, ketqua: e.ketqua, files: e.files, className: e.className, tinhtrang:e.tinhtrang }
+        $.ajax({
+            type: 'GET',
+            url: '/Event/UpdateEvent',
+            datatype: "json",
+            data:  DemoEvent ,
+            async: false,
+        }).done(function (d) {
+            $('#update-event-modal').modal({
+                    backdrop: 'static'
             });
-            $this.$modal.find('.delete-event').show().end().find('.save-event').hide().end().find('.modal-body').empty().prepend(form).end().find('.delete-event').unbind('click').click(function () {
+            $('#update-event-modal').find('.modal-body').empty().prepend(d).end().find('.delete-event').unbind('click').click(function () {
                 $this.$calendarObj.fullCalendar('removeEvents', function (ev) {
                     return (ev._id == calEvent._id);
                 });
                 $this.$modal.modal('hide');
             });
-            $this.$modal.find('form').on('submit', function () {
-                calEvent.title = form.find("input[type=text]").val();
-                $this.$calendarObj.fullCalendar('updateEvent', calEvent);
-                $this.$modal.modal('hide');
-                return false;
-            });
+           //data = d;
+            //var i = 0
+            // for (i; i < d.length; i++) {
+            //d[i].start = new Date(d[i].start.substr(6))
+            //}
+        });
+            //var form = $("<form></form>");
+            //form.append("<label>Change event name</label>");
+            //form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success waves-effect waves-light'><i class='fa fa-check'></i> Save</button></span></div>");
+            //$this.$modal.modal({
+            //    backdrop: 'static'
+            //});
+            //$this.$modal.find('.delete-event').show().end().find('.save-event').hide().end().find('.modal-body').empty().prepend(form).end().find('.delete-event').unbind('click').click(function () {
+            //    $this.$calendarObj.fullCalendar('removeEvents', function (ev) {
+            //        return (ev._id == calEvent._id);
+            //    });
+            //    $this.$modal.modal('hide');
+            //});
+            //$this.$modal.find('form').on('submit', function () {
+            //    calEvent.title = form.find("input[type=text]").val();
+            //    $this.$calendarObj.fullCalendar('updateEvent', calEvent);
+            //    $this.$modal.modal('hide');
+            //    return false;
+            //});
     },
     /* on select */
     CalendarApp.prototype.onSelect = function (start, end, allDay) {
@@ -138,21 +161,35 @@
         var y = date.getFullYear();
         var form = '';
         var today = new Date($.now());
+        var defaultEvents;
+        //get data for event 
+        $.ajax({
+            type: 'GET',
+            url: '/Event/GetDemoData',
+            datatype: "json",
+            async: false,
+        }).done(function (d) {
+            defaultEvents = d;
+            var i = 0
+            // for (i; i < d.length; i++) {
+            //d[i].start = new Date(d[i].start.substr(6))
+            //}
+        });
 
-        var defaultEvents =  [{
-                title: 'Hey!',
-                start: new Date($.now() + 158000000),
-                className: 'bg-purple'
-            }, {
-                title: 'See John Deo',
-                start: today,
-                end: today,
-                className: 'bg-danger'
-            }, {
-                title: 'Buy a Theme',
-                start: new Date($.now() + 338000000),
-                className: 'bg-primary'
-            }];
+        //var defaultEvents =  [{
+        //        title: 'Hey!',
+        //        start: new Date($.now() + 158000000),
+        //        className: 'bg-purple'
+        //    }, {
+        //        title: 'See John Deo',
+        //        start: today,
+        //        end: today,
+        //        className: 'bg-danger'
+        //    }, {
+        //        title: 'Buy a Theme',
+        //        start: new Date($.now() + 338000000),
+        //        className: 'bg-primary'
+        //    }];
 
         var $this = this;
         $this.$calendarObj = $this.$calendar.fullCalendar({
