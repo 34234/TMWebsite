@@ -60,11 +60,6 @@
                     backdrop: 'static'
             });
             $('#update-event-modal').find('.modal-body').empty().prepend(d).end().find('.btn-success').unbind('click').click(function () {
-              
-                $this.$calendarObj.fullCalendar('removeEvents', function (ev) {
-                    return (ev._id == calEvent._id);
-                });
-                $this.$modal.modal('hide');
             });
             $this.binddata(e);           
         });
@@ -79,7 +74,8 @@
                  source: $this.$sourceCompelete,
              },
              initialTags:e.lienquan,
-             forceLowercase: false,            
+             forceLowercase: false,
+             placeholder: 'Nhập các bên liên quan'
          });
          var badau = e.start.format('DD/MM/YYYY h.mm');
          var ketthuc = e.end.format('DD/MM/YYYY h.mm');
@@ -100,42 +96,48 @@
         var $this = this;
         $.ajax({
             type: 'get',
-            url: '/Event/UpdateEvent',
+            url: '/Event/ADDEvent',
             datatype: 'json',
             contentType: 'application/json',           
             async: false,
         }).done(function (d) {
-            $this.$modal.modal({
+            $('#update-event-modal').modal({
                 backdrop: 'static'
             });
-            $this.$modal.find('.modal-body').empty().prepend(d).end().find('.btn-success').unbind('click').click(function () {
-                form.submit();
-            });
-            $this.$modal.find('form').on('submit', function () {
-                var title = form.find("input[name='title']").val();
-                var beginning = form.find("input[name='beginning']").val();
-                var ending = form.find("input[name='ending']").val();                
+            $('#update-event-modal').find('.modal-body').empty().prepend(d).end().find('.btn-success').unbind('click').click(function () {
+                var title = $("#txttieude").val();
+                var noidung = $("#txtnoidung").val();
+                var ending = $('#txtsongay').val();
+                var lienquan = $('#txtlienquan').tagEditor('getTags')[0].tags;
                 if (title !== null && title.length != 0) {
                     $this.$calendarObj.fullCalendar('renderEvent', {
                         title: title,
                         start: start,
                         end: end,
-                        allDay: false,
-                        className: categoryClass
+                        allDay: true,
+                        lienquan: lienquan,                        
                     }, true);
-                    $this.$modal.modal('hide');
+                    $('#update-event-modal').modal('hide');                    
                 }
                 else {
                     alert('You have to give a title to your event');
                 }
-                return false;
+               
+            });
 
+            
+
+            $('#txtlienquan').tagEditor({
+                autocomplete: {
+                    delay: 0, // show suggestions immediately                 
+                    source: $this.$sourceCompelete,
+                },
+                initialTags: "",
+                forceLowercase: false,
+                placeholder: 'Nhập các bên liên quan'
             });
         });
-           
-       
-
-           
+                             
             $this.$calendarObj.fullCalendar('unselect');
     },
     CalendarApp.prototype.enableDrag = function() {
@@ -182,9 +184,9 @@
 
         var $this = this;
         $this.$calendarObj = $this.$calendar.fullCalendar({
-            slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
-            minTime: '08:00:00',
-            maxTime: '19:00:00',  
+            //slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
+           // minTime: '08:00:00',
+           // maxTime: '19:00:00',  
             defaultView: 'month',  
             handleWindowResize: true,   
             height: $(window).height() - 200,   
@@ -198,7 +200,9 @@
             droppable: true, // this allows things to be dropped onto the calendar !!!
             eventLimit: true, // allow "more" link when too many events
             selectable: true,
-            drop: function(date) { $this.onDrop($(this), date); },
+            drop: function (date) { $this.onDrop($(this), date); },
+            eventResize: function (event, delta, revertFunc) {               
+            },
             select: function (start, end, allDay) { $this.onSelect(start, end, allDay); },
             eventClick: function(calEvent, jsEvent, view) { $this.onEventClick(calEvent, jsEvent, view); }
 

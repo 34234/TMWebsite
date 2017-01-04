@@ -1,4 +1,7 @@
-﻿
+﻿@{
+    ViewBag.Title = "UpdateEvent";
+    Layout = null;
+}
 <form>
     <label>Thêm lịch</label>
     <fieldset class='input-group'>
@@ -16,20 +19,14 @@
         <label for="txtnoidung">Nội dung:</label>
         <input  class="form-control" id="txtnoidung" placeholder="Xin mời nhập nội dung">
     </fieldset>
+  
     <fieldset class='input-group'>
-        <label for="txtngaybd">Bắt đầu:</label>
-        <input  class="form-control" id="txtngaybd" placeholder="Bắt đầu">
-    </fieldset>
-    <fieldset class='input-group'>
-        <label for="txtngaykt">Kết thúc:</label>
-        <input  class="form-control" id="txtngaykt" placeholder="Kết thúc">
+        <label for="txtngaykt">Số ngày</label>
+        <input  class="form-control" id="txtsongay" placeholder="Kết thúc">
     </fieldset>
     <fieldset class='input-group'>
         <label for="txtlienquan">Các bên liên quan:</label>
         <input  class="form-control" id="txtlienquan" placeholder="Liên quan">
-    </fieldset>
-        <span class='input-group-btn'>
-            <button type='submit' class='btn btn-success waves-effect waves-light'><i class='fa fa-check'></i> Lưu</button>
-        </span>
+    </fieldset>       
     
 </form>
